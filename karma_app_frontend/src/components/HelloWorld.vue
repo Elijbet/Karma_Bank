@@ -35,6 +35,14 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+  .well {
+    
+    background-color: rgba(247, 247, 247, .4);
+    border-radius: 5px;
+    min-width: 100%;
+    text-align: center;
+    padding: 5px;
+  }
 body {
   background-color:#C7EDE0;
   background-image: radial-gradient(#fff 10%, transparent 10%),
@@ -68,10 +76,12 @@ button {
   font-family: "Open Sans", Helvetica;
   border-radius: 8px;
   border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );
+  border: 5px solid rgba(247, 247, 247, .5);
+
   background: #DBA3B0;
   color: #fff;
-  box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );
-  
+  /*box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.1 );*/
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.19);
   -webkit-transform: translateZ(0);
      -moz-transform: translateZ(0);
       -ms-transform: translateZ(0);
