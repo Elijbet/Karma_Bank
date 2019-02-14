@@ -6,13 +6,8 @@
       <button id="show-modal" @click="showModal = true">WITHDRAW</button>
       <!-- use the modal component, pass in the prop -->
       <withdraw-modal v-if="showModal" @close="showModal = false">
-        <!--
-          you can use custom content here to overwrite
-          default content
-        -->
-        <p>
-          Silver mist suffused the deck of the ship.
-        </p>
+        <p> {{ randomKarma }} </p>
+        <p> {{ randomKarmaDate }} </p>
       </withdraw-modal>
     </div>
 
@@ -21,11 +16,36 @@
 
 <script>
   import WithdrawModal from './WithdrawModal.vue'
+  import axios from 'axios'
 
   export default {
+
+    created() {
+      axios.get('http://localhost:3000/karmas') 
+        .then(response => {
+        this.karmas = response.data
+      })
+        .catch(e => {
+        this.error.push(e)
+      })
+    },
     data() {
       return {
-        showModal: false
+        showModal: false,
+        karmas: []
+      }
+    },
+    computed: {
+      randomKarma() {
+        // let karma = this.karmas[Math.floor(Math.random()*this.karmas.length)];
+        let karma = this.karmas[0].entry
+        return karma
+      },
+      randomKarmaDate() {
+        let date = this.karmas[0].date
+        var event = new Date(date);
+
+        return event.toDateString()
       }
     },
     components: {

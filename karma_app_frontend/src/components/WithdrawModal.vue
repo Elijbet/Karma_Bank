@@ -4,17 +4,19 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 
+        	<slot></slot>
+<!-- 
           <div class="modal-header">
             <slot name="header">
-              <!-- default header -->
+              default header
             </slot>
-          </div>
+          </div> -->
 
-          <div class="modal-body">
+<!--           <div class="modal-body">
             <slot name="body">
               default body
             </slot>
-          </div>
+          </div> -->
 
           <div class="modal-footer">
             <slot name="footer">
@@ -24,6 +26,7 @@
               </button>
             </slot>
           </div>
+
         </div>
       </div>
     </div>
@@ -37,7 +40,7 @@ button {
 }
 
 .button-position {
-	transform: translate(230%, -160%);
+	transform: translate(250%, 80%);
   /*transform: translateY(-300px);*/
   /*transform: translateX(160px);*/
 } 
@@ -60,12 +63,15 @@ button {
 }
 
 .modal-container {
-  width: 50%;
-  height: 50%;
-  border-radius: 1rem;
-  margin: 0px auto;
+	display: inline-flex;
+  max-width: 1000px;
+  max-height: 600px;
+  flex-direction: column;
+  margin: 15% auto;
   padding: 20px 30px;
+  padding-bottom: 20px !important;
   background-color: #fff;
+  border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
