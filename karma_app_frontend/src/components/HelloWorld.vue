@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>KARMA &nbsp BANK</h1>
+    <h1>KARMA <br/> BANK</h1>
     <div class="flex-row">
       <button>DEPOSIT</button>
       <button id="show-modal" @click="showModal = true">WITHDRAW</button>
@@ -62,6 +62,7 @@ p {
   font-size: 2rem;
 }
 h1 {
+  margin-top: 0 !important;
   font-family: 'Monoton', cursive;
   font-weight: normal;
   color: #C84072;
