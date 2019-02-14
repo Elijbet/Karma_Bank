@@ -3,15 +3,35 @@
     <h1>KARMA &nbsp BANK</h1>
     <div class="flex-row">
       <button>DEPOSIT</button>
-      <button>WITHDRAW</button>
+      <button id="show-modal" @click="showModal = true">WITHDRAW</button>
+      <!-- use the modal component, pass in the prop -->
+      <withdraw-modal v-if="showModal" @close="showModal = false">
+        <!--
+          you can use custom content here to overwrite
+          default content
+        -->
+        <p>
+          Silver mist suffused the deck of the ship.
+        </p>
+      </withdraw-modal>
     </div>
-    <!-- <p>
-      Silver mist suffused the deck of the ship.
-    </p> -->
+
   </div>
 </template>
 
 <script>
+  import WithdrawModal from './WithdrawModal.vue'
+
+  export default {
+    data() {
+      return {
+        showModal: false
+      }
+    },
+    components: {
+      WithdrawModal,
+    }
+  }
 </script>
 
 <style>
@@ -35,14 +55,6 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
-  .well {
-    
-    background-color: rgba(247, 247, 247, .4);
-    border-radius: 5px;
-    min-width: 100%;
-    text-align: center;
-    padding: 5px;
-  }
 body {
   background-color:#C7EDE0;
   background-image: radial-gradient(#fff 10%, transparent 10%),
@@ -108,5 +120,6 @@ button:active {
   box-shadow: 0px 0px 0px rgba( 15, 165, 60, 0.0 );
   background: rgba( 20, 224, 133, 1 );
 }
+
 </style>
 
