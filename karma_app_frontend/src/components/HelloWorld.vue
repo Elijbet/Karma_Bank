@@ -6,8 +6,8 @@
       <button id="show-modal" @click="showModal = true">WITHDRAW</button>
       <!-- use the modal component, pass in the prop -->
       <withdraw-modal v-if="showModal" @close="showModal = false">
-        <p> {{ randomKarma }} </p>
-        <p> {{ randomKarmaDate }} </p>
+        <p> {{ randomKarma() }} </p>
+        <p> {{ randomKarmaDate() }} </p>
       </withdraw-modal>
     </div>
 
@@ -32,19 +32,20 @@
     data() {
       return {
         showModal: false,
-        karmas: []
+        karmas: [],
+        karmaObject: {}
       }
     },
-    computed: {
+    methods: {
       randomKarma() {
-        // let karma = this.karmas[Math.floor(Math.random()*this.karmas.length)];
-        let karma = this.karmas[0].entry
+        let length = this.karmas.length
+        this.karmaObject = this.karmas[Math.floor(Math.random()*length)];
+        let karma = this.karmaObject.entry
         return karma
       },
       randomKarmaDate() {
-        let date = this.karmas[0].date
+        let date = this.karmaObject.date
         var event = new Date(date);
-
         return event.toDateString()
       }
     },
