@@ -10,9 +10,9 @@
         <p> {{ randomKarma() }} </p>
         <p> {{ randomKarmaDate() }} </p>
       </withdraw-modal>
-      <withdraw-modal v-if="showModalDeposit" @close="showModalDeposit = false">
-        <p> test </p>
-      </withdraw-modal>
+      <deposit-modal v-if="showModalDeposit" @close="showModalDeposit = false">
+        <textarea v-model="message" placeholder="It was a great day because ..."></textarea>
+      </deposit-modal>
     </div>
 
   </div>
@@ -20,6 +20,7 @@
 
 <script>
   import WithdrawModal from './WithdrawModal.vue'
+  import DepositModal from './DepositModal.vue'
   import axios from 'axios'
 
   export default {
@@ -38,7 +39,8 @@
         showModalWithdraw: false,
         showModalDeposit: false,
         karmas: [],
-        karmaObject: {}
+        karmaObject: {},
+        message: ''
       }
     },
     methods: {
@@ -56,15 +58,39 @@
     },
     components: {
       WithdrawModal,
+      DepositModal
     }
   }
 </script>
 
 <style>
-
+*:focus {
+    outline: none;
+}
+textarea {
+  display: inline-flex;
+  border: 1px solid #C84072 !important;
+  padding: 20px 30px;
+  padding-bottom: 20px !important;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: #C84072;
+  max-width: 900px;
+  max-height: 400px;
+}
+textarea::placeholder {
+  font-size: 1rem;
+  color: #C84072;
+}
 p {
   font-family: 'Poiret One', cursive;
   font-size: 2rem;
+  color: #C84072;
+  font-weight: bold;
 }
 h1 {
   margin-top: 0 !important;
@@ -79,7 +105,6 @@ h2 {
   color: #C84072;
 }
 .container {
-  /*background-color: #C3EDE3;*/
   width: 70%;
   height: 500px;
   margin: auto;

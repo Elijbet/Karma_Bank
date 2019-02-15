@@ -56,7 +56,7 @@ button {
   max-height: 600px;
   flex-direction: column;
   margin: 15% auto;
-  padding: 20px 30px;
+  padding: 40px 40px;
   padding-bottom: 20px !important;
   background-color: #fff;
   border-radius: 20px;

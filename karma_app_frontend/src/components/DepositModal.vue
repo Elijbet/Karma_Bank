@@ -4,11 +4,16 @@
       <div class="modal-wrapper">
         <div class="modal-container">
 
+          <div class="modal-header">
+            <slot name="header">
+              <p>Did you enjoy yourself today? What was it that was fun or fulfilling?</p>
+            </slot>
+          </div>
+
         	<slot></slot>
 
           <div class="modal-footer">
             <slot name="footer">
-              <!-- default footer -->
               <button class="modal-default-button button-position" @click="$emit('close')">
                 OK
               </button>
@@ -25,6 +30,11 @@
 button {
 	padding: 1rem;
 	font-size: 1rem;
+}
+
+p {
+  color: #A4D5A6;
+  font-weight: bold;
 }
 
 .button-position {
@@ -56,7 +66,7 @@ button {
   max-height: 600px;
   flex-direction: column;
   margin: 15% auto;
-  padding: 20px 30px;
+  padding: 40px 40px;
   padding-bottom: 20px !important;
   background-color: #fff;
   border-radius: 20px;
