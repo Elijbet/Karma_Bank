@@ -11,7 +11,10 @@
         <p> {{ randomKarmaDate() }} </p>
       </withdraw-modal>
       <deposit-modal v-if="showModalDeposit" @close="showModalDeposit = false">
-        <textarea v-model="message" placeholder="It was a great day because ..."></textarea>
+        <textarea v-model="message" 
+                  placeholder="It was a great day because ..."
+                  @keyup.enter="submit">
+        </textarea>
       </deposit-modal>
     </div>
 
@@ -27,10 +30,10 @@
 
     created() {
       axios.get('http://localhost:3000/karmas') 
-        .then(response => {
+      .then(response => {
         this.karmas = response.data
       })
-        .catch(e => {
+      .catch(e => {
         this.error.push(e)
       })
     },
@@ -54,6 +57,15 @@
         let date = this.karmaObject.date
         var event = new Date(date);
         return event.toDateString()
+      },
+      submit(){
+        axios.post('http://localhost:3000/karmas', {
+          entry: this.message,
+          date: new Date()
+        }) 
+        .catch(e => {
+          this.error.push(e)
+        })
       }
     },
     components: {
