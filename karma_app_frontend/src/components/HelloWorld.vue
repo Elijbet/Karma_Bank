@@ -3,12 +3,15 @@
     <h1>KARMA <br/> BANK</h1>
     <h2>PUT A TOKEN IN A BANK ON A GOOD DAY, TO HAVE A REMINDER ON A BAD DAY.</h2>
     <div class="flex-row">
-      <button>DEPOSIT</button>
-      <button id="show-modal" @click="showModal = true">WITHDRAW</button>
+      <button id="show-modal-deposit" @click="showModalDeposit = true">DEPOSIT</button>
+      <button id="show-modal-withdraw" @click="showModalWithdraw = true">WITHDRAW</button>
       <!-- use the modal component, pass in the prop -->
-      <withdraw-modal v-if="showModal" @close="showModal = false">
+      <withdraw-modal v-if="showModalWithdraw" @close="showModalWithdraw = false">
         <p> {{ randomKarma() }} </p>
         <p> {{ randomKarmaDate() }} </p>
+      </withdraw-modal>
+      <withdraw-modal v-if="showModalDeposit" @close="showModalDeposit = false">
+        <p> test </p>
       </withdraw-modal>
     </div>
 
@@ -32,7 +35,8 @@
     },
     data() {
       return {
-        showModal: false,
+        showModalWithdraw: false,
+        showModalDeposit: false,
         karmas: [],
         karmaObject: {}
       }
