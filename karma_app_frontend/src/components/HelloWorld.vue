@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>KARMA <br/> BANK</h1>
+    <h2>PUT A TOKEN IN A BANK ON A GOOD DAY, TO HAVE A REMINDER ON A BAD DAY.</h2>
     <div class="flex-row">
       <button>DEPOSIT</button>
       <button id="show-modal" @click="showModal = true">WITHDRAW</button>
@@ -63,10 +64,15 @@ p {
 }
 h1 {
   margin-top: 0 !important;
+  margin-bottom: 0 !important;
   font-family: 'Monoton', cursive;
   font-weight: normal;
   color: #C84072;
   font-size: 7rem;
+}
+h2 {
+  font-family: "Open Sans", Helvetica;
+  color: #C84072;
 }
 .container {
   /*background-color: #C3EDE3;*/
