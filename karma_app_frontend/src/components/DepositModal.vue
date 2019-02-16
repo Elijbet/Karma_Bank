@@ -6,7 +6,7 @@
 
           <div class="modal-header">
             <slot name="header">
-              <p>Did you enjoy yourself today? What was it that was fun or fulfilling?</p>
+              <p>Did you enjoy yourself today? <br> What was it that was fun or fulfilling?</p>
             </slot>
           </div>
 
@@ -33,8 +33,9 @@ button {
 }
 
 p {
-  color: #A4D5A6;
+  color: rgba( 20, 224, 133, 1 );
   font-weight: bold;
+  font-family: 'Amatic SC', cursive;
 }
 
 .button-position {

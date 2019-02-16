@@ -1,7 +1,10 @@
 <template>
   <div class="container">
-    <h1>KARMA <br/> BANK</h1>
-    <h2>PUT A TOKEN IN A BANK ON A GOOD DAY, TO HAVE A REMINDER ON A BAD DAY.</h2>
+    <div class="header">
+      <h1>KARMA</h1><h1 class="anton">BANK</h1>
+      <h2>PUT A TOKEN IN A BANK <br> ON A GOOD DAY, <br> TO HAVE A REMINDER <br> ON A BAD DAY.</h2> 
+    </div>
+    
     <div class="flex-row">
       <button id="show-modal-deposit" @click="showModalDeposit = true">DEPOSIT</button>
       <button id="show-modal-withdraw" @click="showModalWithdraw = true">WITHDRAW</button>
@@ -10,7 +13,7 @@
         <p> {{ randomKarma() }} </p>
         <p> {{ randomKarmaDate() }} </p>
       </withdraw-modal>
-      <deposit-modal v-if="showModalDeposit" @close="showModalDeposit = false">
+      <deposit-modal v-if="showModalDeposit" @close="closeDeposit">
         <textarea v-model="message" 
                   placeholder="It was a great day because ..."
                   @keyup.enter="submit">
@@ -59,13 +62,21 @@
         return event.toDateString()
       },
       submit(){
-        axios.post('http://localhost:3000/karmas', {
-          entry: this.message,
-          date: new Date()
-        }) 
-        .catch(e => {
-          this.error.push(e)
-        })
+        if(this.message.length > 0){
+          axios.post('http://localhost:3000/karmas', {
+            entry: this.message,
+            date: new Date()
+          }) 
+          .catch(e => {
+            this.error.push(e)
+          }) 
+        }
+        
+      },
+      closeDeposit() {
+        this.showModalDeposit = false,
+        this.submit()
+        this.message = ''
       }
     },
     components: {
@@ -76,8 +87,16 @@
 </script>
 
 <style>
+
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /*align-items: flex-start;*/
+  margin-left: 70%;
+}
 *:focus {
-    outline: none;
+  outline: none;
 }
 textarea {
   display: inline-flex;
@@ -88,20 +107,23 @@ textarea {
   border-radius: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
+  font-size: 1.3rem;
   color: #C84072;
   max-width: 900px;
   max-height: 400px;
 }
 textarea::placeholder {
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: #C84072;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
 }
 p {
-  font-family: 'Poiret One', cursive;
+  font-family: 'Amatic SC', cursive;
   font-size: 2rem;
-  color: #C84072;
+  color: rgba( 20, 224, 133, 1 );
   font-weight: bold;
 }
 h1 {
@@ -112,28 +134,42 @@ h1 {
   color: #C84072;
   font-size: 7rem;
 }
+.anton {
+  font-family: 'Anton', sans-serif;
+  font-size: 6.5rem;
+  transform: translateY(10px);
+}
 h2 {
-  font-family: "Open Sans", Helvetica;
+  margin-left: 20px;
+  font-size: 1.5rem;
+  font-family: 'Amatic SC', cursive;
   color: #C84072;
+  transform: translateY(18px);
+  text-align: left;
+  line-height: 1;
 }
 .container {
-  width: 70%;
+  width: 100%;
   height: 500px;
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 body {
-  background-color:#C7EDE0;
+/*  background-color:#C7EDE0;
   background-image: radial-gradient(#fff 10%, transparent 10%),
   radial-gradient(#fff 10%, transparent 10%);
   background-size: 30px 30px;
-  background-position: 0 0, 15px 15px;
+  background-position: 0 0, 15px 15px;*/
+  background: url("../assets/1u.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .flex-row {
   display: flex;
   flex-direction: row;
+  margin-left: 60%;
+  margin-top: 10%;
 }
 /* Reset */
 button {
@@ -145,7 +181,7 @@ button {
   -webkit-appearance: none;
 }
 button:first-child {
-  margin-right: 100px;
+  margin-right: 60px;
 }
 /* Custom */
 button {
@@ -154,7 +190,8 @@ button {
   padding: 30px 48px;
   top: 0;
   font-size: 30px;
-  font-family: "Open Sans", Helvetica;
+  font-family: 'Amatic SC', cursive;
+  font-weight: bold;
   border-radius: 8px;
   border-bottom: 1px solid rgba( 28, 227, 125, 0.5 );
   border: 5px solid rgba(247, 247, 247, .5);
