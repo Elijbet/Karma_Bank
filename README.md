@@ -12,15 +12,11 @@
 
 - Handled CORS. Added my domain in the Origin and Resource of the config/initializers/cors.rb and added gem 'rack-cors'.
 
-- Created a minified production build in the front end. Copied the dist folder to back-end public folder. Deployed it to Heroku.
-
 - Designed the front end main app page.
-
-
 _______
 
 
-#### Next up: run build in front end to create the dist folder with index.html and static; put in backend/public. Push backend to heroku and run rake db:migrate.
+#### Next up: run build in front end to create a minified production build in the front end: create the dist folder with index.html and static; put in backend/public. Push backend to heroku and run rake db:migrate.
 
 _______
 
