@@ -1,6 +1,10 @@
 
-## My personal project: Karma Bank is a positive affirmation app that logs your positive experiences and gives them out later to brighten up your day. 
+# My personal project: Karma Bank 
 
+> Karma Bank is a positive affirmation app that logs your positive experiences and gives them out later to brighten up your day. 
+
+
+# Feature Roadmap
 
 - Created Rails backend API that gives out JSON containing an array of Karmas, each made of an entry for Karma and date.
 
@@ -13,14 +17,18 @@
 - Handled CORS. Added my domain in the Origin and Resource of the config/initializers/cors.rb and added gem 'rack-cors'.
 
 - Designed the front end main app page.
-_______
 
+### Next up: 
+Run build in front end to create a minified production build in the front end: create the dist folder with index.html and static; put in backend/public. Push backend to heroku and run rake db:migrate.
 
-#### Next up: run build in front end to create a minified production build in the front end: create the dist folder with index.html and static; put in backend/public. Push backend to heroku and run rake db:migrate.
-
-_______
+# Installation
 
 To run locally:
 
-- navigate to backend and run rails s
-- navigate to front end and run yarn serve
+- navigate to backend and run `rails s`
+- navigate to front end and run `yarn serve`
+- go to http://localhost:8080/ in your browser
+
+# Author
+
+Eliza Khachatryan
